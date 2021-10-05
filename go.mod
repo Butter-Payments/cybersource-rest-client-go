@@ -1,4 +1,4 @@
-module github.com/tooolbox/cybersource-rest-client-go
+module github.com/Butter-Payments/cybersource-rest-client-go
 
 go 1.13
 

@@ -722,7 +722,7 @@ type GetTransactionOKBodyApplicationInformation struct {
 	//
 	// For details, see the appendix of reason codes in the documentation for the relevant payment method.
 	//
-	ReasonCode string `json:"reasonCode,omitempty"`
+	ReasonCode int64 `json:"reasonCode,omitempty"`
 
 	// The status of the submitted transaction.
 	Status string `json:"status,omitempty"`
@@ -819,7 +819,7 @@ type GetTransactionOKBodyApplicationInformationApplicationsItems0 struct {
 	ReconciliationID string `json:"reconciliationId,omitempty"`
 
 	// The description for this field is not available.
-	ReturnCode string `json:"returnCode,omitempty"`
+	ReturnCode int64 `json:"returnCode,omitempty"`
 
 	// The description for this field is not available.
 	Status string `json:"status,omitempty"`
@@ -2568,7 +2568,7 @@ type GetTransactionOKBodyOrderInformationLineItemsItems0 struct {
 	// For details, see `tax_amount` field description in [Level II and Level III Processing Using the SCMP API.](https://apps.cybersource.com/library/documentation/dev_guides/Level_2_3_SCMP_API/html/wwhelp/wwhimpl/js/html/wwhelp.htm)
 	//
 	// Max Length: 15
-	TaxAmount string `json:"taxAmount,omitempty"`
+	TaxAmount int64 `json:"taxAmount,omitempty"`
 
 	// Per-item price of the product. This value cannot be negative. You can include a decimal point (.), but you
 	// cannot include any other special characters. CyberSource truncates the amount to the correct number of decimal
@@ -2578,7 +2578,7 @@ type GetTransactionOKBodyOrderInformationLineItemsItems0 struct {
 	// [Credit Card Services Using the SCMP API.](http://apps.cybersource.com/library/documentation/dev_guides/CC_Svcs_SCMP_API/html)
 	//
 	// Max Length: 15
-	UnitPrice string `json:"unitPrice,omitempty"`
+	UnitPrice float64 `json:"unitPrice,omitempty"`
 }
 
 // Validate validates this get transaction o k body order information line items items0
@@ -2690,7 +2690,7 @@ func (o *GetTransactionOKBodyOrderInformationLineItemsItems0) validateUnitPrice(
 		return nil
 	}
 
-	if err := validate.MaxLength("unitPrice", "body", string(o.UnitPrice), 15); err != nil {
+	if err := validate.MaxLength("unitPrice", "body", fmt.Sprintf("%f", o.UnitPrice), 15); err != nil {
 		return err
 	}
 

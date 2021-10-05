@@ -14,7 +14,7 @@ The CyberSource Go client provides convenient access to the [CyberSource REST AP
 Go Modules:
 ```shell
 # In your project:
-go get github.com/tooolbox/cybersource-rest-client-go
+go get github.com/Butter-Payments/cybersource-rest-client-go
 ```
 
 
